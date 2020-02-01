@@ -43,7 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Functors\Id.cs" />
     <Compile Include="Monads\Either.Monad.cs" />
+    <Compile Include="Monads\Either.Monad.Example.Linq.cs" />
+    <Compile Include="Monads\Either.Monad.Example.Error.cs" />
     <Compile Include="Monads\Either.Monad.Example.cs" />
     <Compile Include="Monads\Maybe.Monad.Example.cs" />
     <Compile Include="Monads\Maybe.Functor.Example.cs" />

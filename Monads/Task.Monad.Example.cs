@@ -25,6 +25,13 @@ namespace FunctionalCSharpWithCategories.Task.Monad.Example
             return result;
         }
 
+        public static Task<Either<TLeft, T1>> Map<TLeft, T, T1>(this Task<Either<TLeft, T>> @source, Func<T, T1> f) =>
+          source.ContinueWith(task => task.Result.MatchWith<Either<TLeft, T1>>((
+                        left: (e) => new Left<TLeft, T1>(e),
+                        right: (v) => new Right<TLeft, T1>(f(v))
+                    ))
+          );
+
         public static Task<Either<TLeft, T1>> Bind<TLeft, T, T1>(this Task<Either<TLeft, T>> @source, Func<T, Task<Either<TLeft, T1>>> f)
         {
             var result = source.ContinueWith(task =>
